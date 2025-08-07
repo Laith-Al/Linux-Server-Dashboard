@@ -7,4 +7,5 @@
 Run this one-liner to install:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Laith-Al/your-repo-name/main/data/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/Laith-Al/Linux-Server-Dashboard/main/data/install.sh | bash
+
