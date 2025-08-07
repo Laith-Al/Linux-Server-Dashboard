@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Server Dashboard</title>    
+  <link rel="icon" href="data/favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #00bcd4;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 30px 50px;
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .stat {
+      font-size: 1.4em;
+      margin: 15px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Server Dashboard</h1>
+  <div class="card">
+    <div class="stat"><span class="label">Hostname:</span> <span id="host">...</span></div>
+    <div class="stat"><span class="label">IP Address:</span> <span id="ip">...</span></div>
+    <div class="stat"><span class="label">CPU Usage:</span> <span id="cpu">...</span></div>
+    <div class="stat"><span class="label">RAM Usage:</span> <span id="ram">...</span></div>
+    <div class="stat"><span class="label">Uptime:</span> <span id="uptime">...</span></div>
+    <div class="stat"><span class="label">CPU Temp:</span> <span id="cputemp">...</span></div>
+  </div>
+
+  <script>
+    function formatUptime(seconds) {
+      const d = Math.floor(seconds / 86400);
+      const h = Math.floor((seconds % 86400) / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      const s = seconds % 60;
+      return `${d}d ${h}h ${m}m ${s}s`;
+    }
+
+    async function updateStats() {
+      const res = await fetch('/stats');
+      const data = await res.json();
+      document.getElementById("cpu").textContent = `${data.cpu}%`;
+      document.getElementById("ram").textContent = `${data.ram}%`;
+      document.getElementById("uptime").textContent = formatUptime(data.uptime);
+      document.getElementById("host").textContent = data.hostname;
+      document.getElementById("ip").textContent = data.ip;
+      document.getElementById("cputemp").textContent = data.cputemp !== null ? `${data.cputemp} °C` : "Unavailable";
+    }
+
+    setInterval(updateStats, 2000);
+    updateStats();
+  </script>
+</body>
+</html>
