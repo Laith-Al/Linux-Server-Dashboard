@@ -9,7 +9,7 @@
 Run this one command to install:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Laith-Al/Linux-Server-Dashboard/main/data/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/Laith-Al/Linux-Server-Dashboard/refs/heads/main/data/install.sh | bash
 ```
 
 ---
@@ -20,4 +20,5 @@ Open your browser and go to:
 
 ```
 http://<your-device-ip>:49200
+
 ```
