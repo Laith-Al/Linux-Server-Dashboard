@@ -1,12 +1,12 @@
 # Linux Server Dashboard
 
-📊 A lightweight system dashboard for Linux machines that displays vital data.
+📊 A lightweight system dashboard for Linux machines that displays vital data!
 
 ---
 
 ## 📦 Installation
 
-Run this one-liner to install:
+Run this one command to install:
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/Laith-Al/Linux-Server-Dashboard/main/data/install.sh | bash
