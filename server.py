@@ -23,7 +23,7 @@ def index():
     try:
         return send_file("index.html")
     except FileNotFoundError:
-        abort(404, description="Dashboard HTML not found")
+        abort(404, description="Dashboard HTML not found, Please Re-Install!")
 
 @app.route("/stats")
 def stats():
@@ -72,3 +72,4 @@ if __name__ == "__main__":
         app.run(host="0.0.0.0", port=49200)
     except Exception as e:
         print(f"Failed to start server: {e}")
+#Thank you for using Linux Server Dashboard
