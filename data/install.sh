@@ -5,7 +5,6 @@ set -e
 echo
 echo "Thank you for installing the Linux Server Dashboard!"
 echo "This script will install dependencies and set everything up."
-echo
 echo "Updating package lists..."
 sudo apt-get update
 
